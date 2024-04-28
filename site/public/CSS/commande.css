@@ -1,0 +1,90 @@
+#content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 5em;
+}
+
+h1{
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#titre-recap{
+    padding-bottom: 1em;
+}
+
+.box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 0px 20px var(--noir);
+    border-radius: 20px;
+
+    width: 60%;
+}
+
+.descriptif{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.desc-prod{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: max-content;
+    padding: 1em;
+    margin: 1em;
+    border: 1px solid #ccc;
+    border-radius: 1em;
+}
+
+.desc-prod>label{
+    font-weight: bold;
+}
+
+.desc-prod>ul{
+    padding: 0;
+}
+
+.submit-paiement{
+    padding: 1em;
+}
+
+.cord-bancaire{
+    display: grid;
+    grid-template-columns: 65% 35%;
+    grid-template-rows: 20% 40% 40%;
+    grid-template-areas: 
+    "titre titre"
+    "numcarte numcarte"
+    "date cvc";
+}
+
+#titre-bancaire{
+    grid-area: titre;
+    text-align: center;
+}
+
+#numero-carte{
+    grid-area: numcarte;
+}
+
+#date-expire-carte{
+    grid-area: date;
+}
+
+#code-carte{
+    grid-area: cvc;
+}
+
+#titre-livraison{
+    text-align: center;
+}
+
+.bouton{
+    margin: 2em 0 2em 0;
+}

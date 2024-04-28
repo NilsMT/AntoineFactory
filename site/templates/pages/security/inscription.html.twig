@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AntoineFactory | inscription{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    <link href="{{asset('CSS/default.css')}}" rel="stylesheet"/>
+    <link href="{{asset('CSS/register.css')}}" rel="stylesheet"/>
+{% endblock %}
+
+{% block header %}
+    {% include "partials/_header.html.twig" %}
+    <div class="actions_supp">
+        <a class="act_supp" href="javascript:history.back()" id="back">&#x276e; Retour</a>
+    </div>
+{% endblock %}
+
+{% block body %}
+
+    <section id="content">
+
+            {{ form_start(form) }}
+            <div class="formulaire">
+                <h1>Formulaire d'inscription</h1>
+
+                <div class="input_container" id="nom">
+                    {{ form_label(form.nom) }}
+                    {{ form_widget(form.nom) }}
+                    <div class="">
+                        {{ form_errors(form.nom) }}
+                    </div>     
+                </div>
+
+                <div class="input_container" id="prenom">
+                    {{ form_label(form.prenom) }}
+                    {{ form_widget(form.prenom) }}
+                    <div class="">
+                        {{ form_errors(form.prenom) }}
+                    </div>     
+                </div>
+
+                <div class="input_container" id="email">
+                    {{ form_label(form.email) }}
+                    {{ form_widget(form.email) }}
+                    <div class="">
+                        {{ form_errors(form.email) }}
+                    </div>     
+                </div>
+
+                <div class="input_container" id="mdp1">
+                    {{ form_label(form.plainPassword.first) }}
+                    <div class="input_row passwordinput">
+                        {{ form_widget(form.plainPassword.first) }}
+                        <img class="bouton" jaune src="../assets/icons/show.png"></img>
+                    </div>
+                    <div class="">
+                        {{ form_errors(form.plainPassword.first) }}
+                    </div>     
+                </div>
+
+                <div class="input_container" id="mdp2">
+                    {{ form_label(form.plainPassword.second) }}
+                    <div class="input_row passwordinput">
+                        {{ form_widget(form.plainPassword.second) }}
+                        <img class="bouton" jaune src="../assets/icons/show.png"></img>
+                    </div>
+                    <div class="">
+                        {{ form_errors(form.plainPassword.second) }}
+                    </div>     
+                </div>
+                {{ form_row(form.submit) }}
+            </div>
+
+            {{ form_end(form) }}
+
+    </section>
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends "base.html.twig" %}
+
+{% block title %}AntoineFactory | Accueil{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    <link href="{{asset('CSS/default.css')}}" rel="stylesheet"/>
+    <link href="{{asset('CSS/index.css')}}" rel="stylesheet"/>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+    <script src="https://kit.fontawesome.com/a0107e3e1b.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block body %}
+<body>
+    <div class="actions_supp">
+    </div>
+    <section id="content">
+        <section class="section_acc" id="alaune">
+            <a target="_self" class="event img_cont" id="first">
+                <img src="{{ asset('assets/icons/placeholder.png')}}" alt="Image de l'événement" class="img-prod">
+                <div class="overlay">
+                    <div class="name">Restockage des piloris</div>
+                </div>
+            </a>
+            <a target="_self" class="event img_cont" id="second">
+                <img src="{{asset('../assets/icons/placeholder.png')}}" alt="Image de l'événement" class="img-prod">
+                <div class="overlay">
+                    <div class="name">Ajout de nouveau articles</div>
+                </div>
+            </a>
+            <a target="_self" class="event img_cont" id="third">
+                <img src="{{asset('../assets/icons/placeholder.png')}}" alt="Image de l'événement" class="img-prod">
+                <div class="overlay">
+                    <div class="name">Amélioration du service de livraison</div>
+                </div>
+            </a>
+        </section>
+        <h1 class="bold section_titre">Articles en vedettes :</h1>
+        <section class="section_acc" id="envedette">
+            {% set i = 0 %}
+            {% for product in products %}
+                {% if i != 4 %}
+                    {% if product.stock != 0 %}                
+                        <a href="{{ path('product.info', {id : product.id }) }}" class="article" {% if product.promotion > 0 and product.status != "out" %} promotion="true" {% endif %} status = {{product.status}} >
+                            <img src="{{ vich_uploader_asset(product, 'imageFile') }}" alt="Image du produit" class="img-prod">
+                            <div class="overlay">
+                                <div class="status-prod">
+                                    {% if product.status == "low" %}
+                                        Bientôt epuisé
+                                    {% endif %}
+                                    {% if product.status == "out" %}
+                                        Epuisé
+                                    {% endif %}
+                                    {% if product.status == "new" %}
+                                        Nouveau
+                                    {% endif %}
+                                    {% if product.status == "limited" %}
+                                        Limité
+                                    {% endif %}
+                                </div>
+                                <div class="name-prod">
+                                    {{product.nom}}
+                                </div>
+                                <div class="bot-prod">
+                                    <div class="price-prod">
+                                        {{ product.prix * (1-(product.promotion / 100)) }} €
+                                    </div>
+                                    <div class="promo-prod">
+                                        -{{product.promotion}}%
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        {% set i = i + 1 %}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}    
+            <a target="_self" id="gocatalog" href="{{ path('product.index') }}">Voir le catalogue</a>
+        </section>
+    </section> 
+</body>
+
+
+{% endblock %}

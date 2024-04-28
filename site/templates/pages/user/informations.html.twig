@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AntoineFactory | Profil{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    <link href="{{asset('CSS/default.css')}}" rel="stylesheet"/>
+    <link href="{{asset('CSS/login.css')}}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+    <div class="actions_supp">
+        <a class="act_supp" href="javascript:history.back()" id="back">&#x276e; Retour</a>
+        {% if app.user.roles[0] == 'ROLE_ADMIN' %}
+            <a class="bouton" href="{{ path('product.inventaire') }}" jaune>Accès administrateur</a>
+        {% endif %}
+    </div>
+    <section id="content">
+        <h1>Mes informations : </h1>
+
+        <p>Prénom : {{user.prenom}}</p>
+        <p>Nom : {{user.nom}}</p>
+        <p>Adresse mail : {{user.email}}</p>
+        <a href="{{path('security.logout')}}" class="bouton" noir>Déconnexion</a>
+        <a href="{{path('user.edit',{user_id : user.id} )}}" class="bouton" jaune>Modifier mes informations</a>
+    </section>
+{% endblock %}

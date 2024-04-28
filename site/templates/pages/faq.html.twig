@@ -1,0 +1,60 @@
+{% extends "base.html.twig" %}
+
+{% block title %}AntoineFactory | FAQ{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    <link href="{{asset('CSS/default.css')}}" rel="stylesheet"/>
+    <link href="{{asset('CSS/faq.css')}}" rel="stylesheet"/>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+    <script src="https://kit.fontawesome.com/a0107e3e1b.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block header %}
+    {% include "partials/_header.html.twig" %}
+    <div class="actions_supp">
+        <a class="act_supp" href="javascript:history.back()" id="back">&#x276e; Retour</a>
+    </div>
+{% endblock %}
+
+{% block body %}
+<body>
+    <section id="content">
+        <div class="qa">
+            <h1 class="question bold">
+                Comment fonctionne la gravure laser ?
+            </h1>
+            <div class="reponse">
+                Pour graver un matériau, on va envoyer un rayon laser très puissant qui va permettre d'enlever plus ou moins de matière selon l'intensité du laser.  Le matériau va alors brûler ce qui va laisser une trace qui va former l'image souhaitée.
+            </div>
+        </div>
+        <div class="qa">
+            <h1 class="question bold">
+                Quand serais-je livré ?
+            </h1>
+            <div class="reponse">
+                Les livraisons se font généralement sous 7 jours ouvrés, toutefois si vous n'êtes pas livré dans ce délai vous pouvez envoyer un mail à l'adresse suivante : <a href="mailto:antoinefactory@gmail.com" class="lien">antoinefactory@gmail.com .</a>
+            </div>
+        </div>
+        <div class="qa">
+            <h1 class="question bold">
+                Je voudrais faire quelque chose de personnalisé, comment faire ?
+            </h1>
+            <div class="reponse">
+                Si vous souhaitez graver un message ou une image sur un produit, vous n'avez qu'à télécharger l'image et écrire un commentaire lors de la finalisation de votre commande.
+            </div>
+        </div>
+        <div class="qa">
+            <h1 class="question bold">
+                Comment puis-je vous contacter ?
+            </h1>
+            <div class="reponse">
+               Vous pouvez m'envoyer un mail à l'adresse suivante : <a href="mailto:antoinefactory@gmail.com" class="lien">antoinefactory@gmail.com</a> ou m'envoyer un message sur Instagram : <a href="https://www.instagram.com/antoinefactory/" class="lien">@antoinefactory</a> .
+            </div>
+        </div>
+    </section>
+</body>
+{% endblock %}

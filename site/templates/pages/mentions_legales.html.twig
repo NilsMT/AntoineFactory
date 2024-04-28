@@ -1,0 +1,104 @@
+{% extends "base.html.twig" %}
+
+{% block title %}AntoineFactory | Mentions Légales{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    <link href="{{asset('CSS/default.css')}}" rel="stylesheet"/>
+    <link href="{{asset('CSS/mentions_legales.css')}}" rel="stylesheet"/>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+    <script src="https://kit.fontawesome.com/a0107e3e1b.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block header %}
+    {% include "partials/_header.html.twig" %}
+    <div class="actions_supp">
+        <a class="act_supp" href="javascript:history.back()" id="back">&#x276e; Retour</a>
+    </div>
+{% endblock %}
+
+{% block body %}
+<body>
+    <section id="content">
+        <div class="article_m">
+            <h1 class="titre_article bold">Informations légales :</h1>
+            <div class="contenu_article">
+              <p>AntoineFactory</p>
+              <p>6 rue Armand Guillemot, Lorient 56100</p>
+              <p>07 67 94 33 17</p>
+              <p>antoinefactory@gmail.com</p>
+              <p>SIRET : 97969459300018</p>
+            </div>
+          </div>
+        
+          <div class="article_m">
+            <h1 class="titre_article bold">Directeur de la publication :</h1>
+            <div class="contenu_article">
+              <p>Antoine CRETUAL</p>
+            </div>
+          </div>
+        
+          <div class="article_m">
+            <h1 class="titre_article bold">Hébergeur du site :</h1>
+            <div class="contenu_article">
+              <p>OVH</p>
+              <p>2 rue Kellermann, Roubaix 59100</p>
+              <p>1007 (numéro surtaxé)</p>
+              <p>SIRET : 42476141900045</p>
+            </div>
+          </div>
+        
+          <div class="article_m">
+            <h1 class="titre_article bold">Collecte des données personnelles :</h1>
+            <div class="contenu_article">
+              <p>Les informations recueillies sur le site AntoineFactory font l'objet d'un traitement informatique destiné à la gestion des comptes utilisateurs. Les données collectées incluent l'email, le nom, le prénom et le mot de passe. Ces informations sont nécessaires pour assurer le bon fonctionnement du site et garantir la sécurité des comptes.</p>
+            </div>
+          </div>
+        
+          <div class="article_m">
+            <h1 class="titre_article bold">Finalités du traitement :</h1>
+            <div class="contenu_article">
+              <p>Les données collectées sont utilisées à des fins de gestion des comptes utilisateurs, de traitement des commandes, d'amélioration des services proposés, et d'envoi d'informations commerciales si l'utilisateur y consent.</p>
+            </div>
+          </div>
+        
+          <div class="article_m">
+            <h1 class="titre_article bold">Confidentialité et sécurité :</h1>
+            <div class="contenu_article">
+              <p>AntoineFactory s'engage à garantir la confidentialité et la sécurité des données personnelles collectées. Les informations sensibles, telles que les mots de passe, sont stockées de manière sécurisée et ne sont pas partagées avec des tiers sans le consentement explicite de l'utilisateur.</p>
+            </div>
+          </div>
+        
+          <div class="article_m">
+            <h1 class="titre_article bold">Droits des utilisateurs :</h1>
+            <div class="contenu_article">
+              <p>Conformément à la législation française (Loi Informatique et Libertés, RGPD), les utilisateurs disposent d'un droit d'accès, de rectification, de suppression et d'opposition concernant leurs données personnelles. Pour exercer ces droits, ils peuvent contacter antoinefactory@gmail.com.</p>
+            </div>
+          </div>
+        
+          <div class="article_m">
+            <h1 class="titre_article bold">Cookies :</h1>
+            <div class="contenu_article">
+              <p>Le site AntoineFactory utilise des cookies pour améliorer l'expérience de navigation. Les utilisateurs ont la possibilité de désactiver les cookies dans les paramètres de leur navigateur.</p>
+            </div>
+          </div>
+        
+          <div class="article_m">
+            <h1 class="titre_article bold">Propriété intellectuelle :</h1>
+            <div class="contenu_article">
+              <p>Tous les contenus présents sur le site [AntoineFactory], tels que les textes, images, logos, sont la propriété exclusive d'AntoineFactory ou de ses partenaires. Toute reproduction ou utilisation sans autorisation préalable est strictement interdite.</p>
+            </div>
+          </div>
+        
+          <div class="article_m">
+            <h1 class="titre_article bold">Loi applicable :</h1>
+            <div class="contenu_article">
+              <p>Les présentes mentions légales sont soumises à la loi française. En cas de litige, les tribunaux compétents sont ceux de Lorient.</p>
+            </div>
+          </div>
+    </section>
+</body>
+{% endblock %}

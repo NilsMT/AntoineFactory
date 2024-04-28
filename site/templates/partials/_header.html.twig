@@ -1,0 +1,27 @@
+<header>
+    <div class="actions_basiques">
+        <div id="l">
+            <a id="cont_logo" href="{{path('home.index')}}">
+                <div class="div_logo"> <!--le machin qui tourne-->
+                    <img class="logo_front" id="logo"  src="{{ asset('assets/logo.png') }}">
+                    <img class="logo_back" id="logo" src="{{ asset('assets/logo2.png') }}">
+                </div>
+            </a>
+        </div>
+        <div id="t">ANTOINE FACTORY</div>
+        {% if app.user %}
+            <a id="p" class="img_cont_header" href="{{ path('panier.index', {user_id : app.user.id }) }}">
+                <img class="icone_header" src="{{ asset('assets/icons/caddie.png') }}" >
+            </a>
+            <a id="c" class="img_cont_header" href="{{ path('user.information',{user_id : app.user.id} ) }}">
+            <img class="icone_header" src="{{ asset('assets/icons/user.png') }}">
+        {% else %} 
+            <a id="p" class="img_cont_header" href="{{ path('security.login') }}">
+                <img class="icone_header" src="{{ asset('assets/icons/caddie.png') }}" >
+            </a>
+            <a id="c" class="img_cont_header" href="{{ path('security.login') }}">
+            <img class="icone_header" src="{{ asset('assets/icons/user.png') }}">
+        {% endif %}
+        </a>
+    </div>
+</header>

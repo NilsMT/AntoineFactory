@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AntoineFactory | Mon panier{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    <link href="{{asset('CSS/default.css')}}" rel="stylesheet"/>
+    <link href="{{asset('CSS/catalogue.css')}}" rel="stylesheet"/>
+    <link href="{{asset('CSS/panier.css')}}" rel="stylesheet"/>
+{% endblock %}
+
+{% block header %}
+    {% include "partials/_header.html.twig" %}
+    <div class="actions_supp">
+        <a class="act_supp" href="javascript:history.back()" id="back">&#x276e; Retour</a>
+    </div>
+{% endblock %}
+
+{% block body %}
+
+        {# <div class="actions_supp" id="search">
+        <a class="act_supp" href="javascript:history.back()" id="back">&#x276e; Retour</a>
+        <form class="searchform" action="{{ path('panier.search', {user_id : app.user.id }) }}" method="post">
+            <input id="searchbar" type="search" name="search" placeholder="Recherchez un article"></input>
+            <button type="submit" id="subsearch"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form> #}
+    </div>
+    <h1 class="titre">Mon Panier</h1>
+    {% if products is not empty %}
+    <section id="content">
+        <section class="filtre">
+            <!-- <div class="titre_filtre">
+                <div>Filtres</div>
+                 <i class="fa-solid fa-sliders"></i>
+            </div> -->
+            <form action="{{ path('panier.commande' )}}" method="post">
+                <div>
+                    Total du panier : {{prixTotal | number_format(2, '.', '') }}  €
+                </div>
+                    <div class="div-btn">
+                       <input class="bouton" jaune type="submit" value=" Passer la commande "></input>
+                    </div>
+                </div>
+            </form>
+            <form action="{{ path('product.index' )}}" method="post">
+            <span class="ligne"> . </span>
+                    <div class="div-btn">
+                       <input class="bouton" jaune type="submit" value=" Continuer mes achats "></input>
+                    </div>
+            </form>
+            {# <form method="post" action="{{ path('product.tri') }}">
+            <span class="ligne"> . </span>
+                <div>
+                    <label for="filter_drpdwn">Filtres :</label>
+                    <div>
+                        <input type="radio" name="filtre">
+                        <label for="croissant">Prix croissant</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="filtre">
+                        <label for="decroissant">Prix décroissant</label>
+                    </div>
+                </div>
+
+            <span class="ligne"> . </span>
+                <div class="input_column">
+                    <label for="filter_drpdwn">Catégorie :</label>
+                    <select id="filter_drpdwn" name="filter">
+                        <option value="all">Tous</option>
+                        <option value="keyring">Porte-clés</option>
+                        <option value="snowball">Boule de neige</option>
+                        <option value="coaster">Dessous de verre</option>
+                        <option value="other">Autre</option>
+                    </select>
+                </div>
+                <span class="ligne"> . </span>
+                <input class="bouton" jaune type="submit" value="Appliquer"></input>
+            </form> #}
+        </section>
+        <section class="catalog">
+            <!--for each article dans la BD-->
+            {% for product in products %}
+                <div class="box-prod">
+                    <a href="{{path('panier.delete', {id_product : product.idProduct.id}) }}" class="del" onClick='return deleteConfirmation()'><i class="fa-solid fa-trash" style="color: #f66151;"></i></a>
+                    <a href="{{ path('product.info', {id : product.idProduct.id}) }}" class="article" {% if product.idProduct.promotion > 0 and product.idProduct.status != "out" %} promotion="true" {% endif %} status = {{product.idProduct.status}} >
+                        <img {% if product.idProduct.imageName != null %}src="{{ vich_uploader_asset(product.idProduct, 'imageFile') }}" {% endif %} alt="Image du produit" class="img-prod">  
+                        <div class="overlay"> 
+                            <div class="name-prod">
+                                {{product.idProduct.nom}}
+                            </div>
+                            <div class="bot-prod">
+                                <div class="price-prod">
+                                    {{ (product.idProduct.prix * (1 - (product.idProduct.promotion / 100))) | number_format(2, '.', '') }} €
+                                </div>
+                                <div class="quant-prod">
+                                    x {{product.quantite}} 
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </section>
+    </section>
+    {% else %}
+    <section id="content" class="no-product">
+        <a href="{{ path('product.index') }}" class="bouton bouton-no-achat" jaune>Commencer mes achats</a>
+    </section>
+    {% endif %}
+{% endblock %}

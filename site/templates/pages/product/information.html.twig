@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AntoineFactory | {{product.nom}} {% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    <link href="{{asset('CSS/default.css')}}" rel="stylesheet"/>
+    <link href="{{asset('CSS/info_article.css')}}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+    <div class="actions_supp">
+        <a class="act_supp" href="javascript:history.back()" id="back">&#x276e; Retour</a>
+    </div>
+    <section id="content">
+        <div id="left">
+            <h2 class="pop-name bold">{{product.nom}}</h2>
+            <div class="pop-info_title">
+                Information sur le produit :
+            </div>
+            <!--for each informations remplies: mettre le label correspondant-->
+            <p><b class="bold">Dimensions : </b>  <br> {{product.longueur}}mm x {{product.largeur}}mm x {{product.epaisseur}}mm</p>
+            <p><b class="bold">Matériaux : </b>  <br> {{product.materiau}}</p>
+            <p class="pop-info-content">
+                <b class="bold">Description : </b> <br>
+                {{product.description}}
+                <br>
+                <!--for each phrase jusqua \n dans la desc: mettre le texte avant, et finir par un <br>-->
+            </p>
+        </div>
+        <div id="right">
+            <img {% if product.imageName != null %} src="{{ vich_uploader_asset(product, 'imageFile') }}" {% endif %} alt="Image du produit" class="pop-img">
+            <div class="pop-price-cont">
+            {% if product.status != "out" %}
+                {% if (product.promotion > 0) %}
+                    <label class="pop-old-price bold">{{product.prix}}€</label>
+                    <div class="pop-promo bold">-{{product.promotion}}%</div>
+                    <label class="pop-price bold">{{ (product.prix * (1 - (product.promotion / 100))) | number_format(2, '.', '') }} €</label>
+                {% else %}
+                    <label class="pop-up-price">{{product.prix}}€</label>
+                {% endif %}
+            {% else %}
+                <label class="pop-price bold">Épuisé</label>
+            {% endif %}
+            </div>
+        </div>
+    </section>
+ {% if app.user %}
+        <form class="pop-footer" method="post" action="{{ path('panier.add',{id_product : product.id}) }}">
+    {% else %}
+        <form class="pop-footer" method="get" action="{{ path('security.login') }}">
+    {% endif %}
+        {% if product.status == "out" %}
+            <input disabled type="submit" class="bouton" jaune class="bouton" value="Victime de son succès">
+        {% else %}
+            {% if app.user %}
+                    {% set quantity = 1 %}
+                    {% set isIn = false %} 
+                    {% for item in app.user.panier %}
+                        {% if item.idProduct.id == product.id %}
+                            {% set quantity = item.quantite %} 
+                            {% set isIn = true %} 
+                        {% endif %}
+                    {% endfor %}
+                <input type="submit" class="bouton" jaune class="bouton" {% if isIn %}value="Mettre à jour le panier"{% else %}value="Ajouter au panier"{% endif %}></a>
+                <div class="input_container">
+                    <label for="quantity">Quantité :</label>
+                    <input required name="quantity" value="{{quantity}}" type="number" min="1" max="{{product.stock}}">
+                </div>
+            {% else %}                
+                <input type="submit" class="bouton" jaune class="bouton" value="Ajouter au panier">
+                <div class="input_container">
+                    <label for="quantity">Quantité :</label>
+                    <input required name="quantity" value="1" type="number" min="1" max="{{product.stock}}">
+                </div>
+            {% endif %}
+        {% endif %}
+    </form>
+    
+{% endblock %}

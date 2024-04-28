@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AntoineFactory | Connexion{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    <link href="{{asset('CSS/default.css')}}" rel="stylesheet"/>
+    <link href="{{asset('CSS/login.css')}}" rel="stylesheet"/>
+{% endblock %}
+
+{% block header %}
+    {% include "partials/_header.html.twig" %}
+    <div class="actions_supp">
+        <a class="act_supp" href="javascript:history.back()" id="back">&#x276e; Retour</a>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <section id="content">
+
+        {% if errors %}
+            <div class="alert alert-danger">{{ errors.messageKey|trans(errors.messageData, 'security') }}</div>
+        {% endif %}
+
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+        <form action="{{path('security.login')}}" method="post" class="formulaire">
+            <h1 class="titre">Connexion</h1>
+            <label>Adresse mail</label>
+            <div class="input_row">
+                <input required name="_username" placeholder="adresse@domaine.com" type="email"></input>
+            </div>
+            <label>Mot de passe</label>
+            <div class="input_row passwordinput">
+                <input required name="_password" type="password"></input>
+                <img class="bouton" jaune src="../assets/icons/show.png"></img>
+            </div>
+            <button class="bouton" jaune="" type="submit"> Se connecter </button>
+        </form>
+        <h1 class="bold">OU</h1>
+        <form action="{{ path('security.register') }}" class="formulaire">
+            <button class="bouton" noir="" type="submit"> S'inscrire </button>
+        </form>
+    </section>
+
+{% endblock %}

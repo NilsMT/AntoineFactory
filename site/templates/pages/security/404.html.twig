@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AntoineFactory | 404{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    <link href="{{asset('CSS/default.css')}}" rel="stylesheet"/>
+    <link href="{{asset('CSS/login.css')}}" rel="stylesheet"/>
+{% endblock %}
+
+{% block header %}
+    {% include "partials/_header.html.twig" %}
+    <div class="actions_supp"></div>
+{% endblock %}
+
+{% block body %}
+        <h1 style="display: flex; justify-content: center;" >ERREUR 404</h1>
+        <br>
+        <h1 style="display: flex; justify-content: center;">LA PAGE DEMANDÉE N'A PAS ÉTÉ TROUVÉE</h1>
+{% endblock %}

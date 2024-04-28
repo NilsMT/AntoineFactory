@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AntoineFactory | Edition Informations{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    <link href="{{asset('CSS/default.css')}}" rel="stylesheet"/>
+    <link href="{{asset('CSS/login.css')}}" rel="stylesheet"/>
+{% endblock %}
+
+{% block header %}
+    {% include "partials/_header.html.twig" %}
+    <div class="actions_supp">
+        <a class="act_supp" href="javascript:history.back()" id="back">&#x276e; Retour</a>
+    </div>
+{% endblock %}
+    
+{% block body %}
+     <section id="content">
+        <div class="formulaire">
+            <h1 class="titre">Modifier mes informations</h1>
+
+            {{form_start(form)}}
+
+            <div class="input_container" id="prenom">
+                {{ form_label(form.prenom) }}
+                {{ form_widget(form.prenom) }}
+                <div class="">
+                    {{ form_errors(form.prenom) }}
+                </div>
+            </div>
+
+            <div class="input_container" id="nom">
+                {{ form_label(form.nom) }}
+                {{ form_widget(form.nom) }}
+                <div id="" class="">
+                    {{ form_errors(form.nom) }}
+                </div>     
+            </div>  
+
+            <div class="input_container" id="plainPassword">
+                {{ form_label(form.plainPassword) }}
+                {{ form_widget(form.plainPassword) }}
+                <div id="" class="">
+                    {{ form_errors(form.plainPassword) }}
+                </div>     
+            </div>            
+            
+            <div class="bouton">
+                {{ form_row(form.submit) }}
+            </div>
+
+            {{form_end(form)}}
+        </div>
+
+        <form action="{{path('user.editPassword',{user_id : user.id} )}}" class="formulaire">
+            <button class="bouton" noir="" type="submit"> Modifier mon mot de passe </button>
+        </form>
+    </section>
+{% endblock %}

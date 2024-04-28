@@ -1,0 +1,81 @@
+    1  cd reseau/Perso/Documents/SAE301-Dev_app/eq_02_01_moreau-thomas-nils_oulmas-thomas_roux-celestin_van-laere-pierric/
+    2  git pull
+    3  udo apt-get install composer
+    4  sudo apt-get install composer
+    5  sudo apt-get install php-xml
+    6  wget https://get.symfony.com/cli/installer -O - | bash
+    7  sudo mv ~/.symfony5/bin/symfony /usr/local/bin/symfony
+    8  symfony serveur:start
+    9  symfony server:start
+   10  cd arbo/
+   11  symfony server:start
+   12  sudo apt update && sudo apt full-upgrade && sudo apt install tzdata --reinstall
+   13  sudo apt install tzdata --reinstall
+   14  sudo apt reinstall composer
+   15  wget https://get.sym-
+   16  fony.com/cli/installer -O - | bash
+   17  wget https://get.symfony.com/cli/installer -O - | bash
+   18  sudo mv ~/.symfony5/bin/symfony /usr/local/bin/symfony
+   19  symfony server:start
+   20  cd ..
+   21  ls
+   22  git add .
+   23  git commit -m "delete arbo"
+   24  git push
+   25  ls
+   26  git add .
+   27  git commit -m "delete .idea"
+   28  git push
+   29  cd reseau/Perso/Documents/SAE301-Dev_app/eq_02_01_moreau-thomas-nils_oulmas-thomas_roux-celestin_van-laere-pierric/
+   30  ls
+   31  cd site/
+   32  ls
+   33  php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+   34  clear
+   35  ls
+   36  pwd
+   37  php composer-setup.php
+   38  ls
+   39  cd ..
+   40  sudo chmod 777 eq_02_01_moreau-thomas-nils_oulmas-thomas_roux-celestin_van-laere-pierric/
+   41  sudo chmod 777 -R eq_02_01_moreau-thomas-nils_oulmas-thomas_roux-celestin_van-laere-pierric/
+   42  cd eq_02_01_moreau-thomas-nils_oulmas-thomas_roux-celestin_van-laere-pierric/
+   43  ls
+   44  ls -l
+   45  ls
+   46  cd site/
+   47  ls
+   48  ls -l
+   49  clear
+   50  php composer-setup.php
+   51  sudo apt remove composer
+   52  php composer.phar 
+   53  php composer.phar update
+   54  sudo apt install php8.1-curl
+   55  php composer.phar update
+   56  cd ..
+   57  ks
+   58  ls
+   59  git commit * -m "Push"
+   60  git push
+   61  git pull
+   62  git push
+   63  ls
+   64  cd site/
+   65  nano .gitignore 
+   66  ls
+   67  rm composer-setup.php 
+   68  ls
+   69  php composer.phar
+   70  git commit
+   71  git add composer.phare
+   72  git add composer.phar
+   73  git commit
+   74  git push
+   75  clear && symfony server:start --no-tls
+   76  sudo service mariadb start
+   77  T7hfKi8F
+   78  clear
+   79  sudo service mariadb start
+   80  clear && symfony server:start --no-tls
+   81  history > history.txt

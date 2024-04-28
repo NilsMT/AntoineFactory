@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AntoineFactory | Commandes{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    <link href="{{asset('CSS/default.css')}}" rel="stylesheet"/>
+    <link href="{{asset('CSS/admin.css')}}" rel="stylesheet"/>
+{% endblock %}
+
+{% block header %}
+    {% include "partials/_header.html.twig" %}
+    <div class="actions_supp">
+        <a class="act_supp" href="{{ path('product.index') }}" id="back">&#x276e; Retour</a>
+    </div>
+    <div class="actions_supp">
+        <a class="act_supp" href="{{ path('product.inventaire') }}">Inventaire</a>
+        <a class="act_supp" href="">Commandes</a>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <table class="table"> 
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Adresse</th>
+                <th>Télephone</th>
+                <th>ID Produit</th>
+                <th>Nom Produit</th>
+                <th>Quantité</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for commande in commandes %}
+            <tr>
+                <td class="limW">{{commande.user.nom}}</td>
+                <td>{{commande.user.prenom}}</td>
+                <td>{{commande.adresse}}</td>
+                <td>{{commande.telephone}}</td>
+                <td>{{commande.idProduct}}</td>
+                <td>{{commande.nomProduit}}</td> 
+                <td>{{commande.quantite}}</td> 
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="navigation">
+        {{ knp_pagination_render(commandes) }}
+    </div>
+
+    <script>
+        function deleteConfirmation() {
+            return (confirm("Supprimer l'article ?"))
+        }
+    </script>
+{% endblock %}

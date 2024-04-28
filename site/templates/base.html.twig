@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}AntoineFactory{% endblock %}</title>
+        <!-- <link rel="icon" type="image/x-icon" src="{{ asset('assets/logo.png') }}"> -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/a0107e3e1b.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var inputNom = document.querySelector('.nom-limit-input');
+                var maxLengthNom = {{ form.nom.vars.attr.maxlength|default(46) }}; // Récupérez la limite depuis les attributs du champ
+                var counterNom = document.getElementById('nom-limit-info');
+                if (inputNom !=null && counterNom != null){
+                    inputNom.addEventListener('input', function() {
+                        var currentLength = inputNom.value.length;
+                        var remainingChars = maxLengthNom - currentLength;
+    
+                        // Affichez la limite de caractères
+                        counterNom.innerText = remainingChars;
+    
+                        // Désactivez l'entrée si la limite est atteinte
+                        if (currentLength >= maxLengthNom) {
+                            inputNom.value = inputNom.value.substring(0, maxLengthNom-1);
+                        } else {
+                            inputNom.removeAttribute('disabled');
+                        }
+                    });
+                } 
+                var inputPrix = document.querySelector('.prix-limit-input');
+                var maxLengthPrix = {{ form.nom.vars.attr.maxlength|default(6) }}; // Récupérez la limite depuis les attributs du champ
+                if (inputPrix !=null){
+                    inputPrix.addEventListener('input', function() {
+                        var currentLength = inputPrix.value.length;
+                        var remainingChars = maxLengthPrix - currentLength;   
+    
+                        // Désactivez l'entrée si la limite est atteinte
+                        if (currentLength >= maxLengthPrix) {
+                            inputPrix.value = inputPrix.value.substring(0, maxLengthPrix);
+                        } else {
+                            inputPrix.removeAttribute('disabled');
+                        }
+                    });
+                } 
+                
+
+                var inputPromo = document.querySelector('.promo-limit-input');
+                var maxLengthPromo = {{ form.nom.vars.attr.maxlength|default(3) }}; // Récupérez la limite depuis les attributs du champ
+                if (inputPromo !=null){
+                    inputPromo.addEventListener('input', function() {
+                        var currentLength = inputPromo.value.length;
+                        var remainingChars = maxLengthPromo - currentLength;   
+
+                        // Désactivez l'entrée si la limite est atteinte
+                        if (currentLength >= maxLengthPromo) {
+                            inputPromo.value = inputPromo.value.substring(0, maxLengthPromo);
+                        } else {
+                            inputPromo.removeAttribute('disabled');
+                        }
+                    });
+                }
+                var inputStock = document.querySelector('.stock-limit-input');
+                var maxLengthStock = {{ form.nom.vars.attr.maxlength|default(10) }}; // Récupérez la limite depuis les attributs du champ
+                if (inputStock !=null){
+                    inputStock.addEventListener('input', function() {
+                        var currentLength = inputStock.value.length;
+                        var remainingChars = maxLengthStock - currentLength;   
+
+                        // Désactivez l'entrée si la limite est atteinte
+                        if (currentLength >= maxLengthStock) {
+                            inputStock.value = inputStock.value.substring(0, maxLengthStock);
+                        } else {
+                            inputStock.removeAttribute('disabled');
+                        }
+                    });
+                }
+                var inputMateriau = document.querySelector('.materiau-limit-input');
+                var maxLengthMateriau = {{ form.nom.vars.attr.maxlength|default(51) }}; // Récupérez la limite depuis les attributs du champ
+                var counterMateriau = document.getElementById('materiau-limit-info');
+                if (inputMateriau !=null && counterMateriau != null){
+                    inputMateriau.addEventListener('input', function() {
+                        var currentLength = inputMateriau.value.length;
+                        var remainingChars = maxLengthMateriau - currentLength;
+
+                        // Affichez la limite de caractères
+                        counterMateriau.innerText = remainingChars;
+
+                        // Désactivez l'entrée si la limite est atteinte
+                        if (currentLength >= maxLengthMateriau) {
+                            inputMateriau.value = inputMateriau.value.substring(0, maxLengthMateriau-1);
+                        } else {
+                            inputMateriau.removeAttribute('disabled');
+                        }
+                    });
+                }
+                var inputLongueur = document.querySelector('.longueur-limit-input');
+                var maxLengthLongueur = {{ form.nom.vars.attr.maxlength|default(4) }}; // Récupérez la limite depuis les attributs du champ
+                if (inputLongueur !=null){
+                    inputLongueur.addEventListener('input', function() {
+                        var currentLength = inputLongueur.value.length;
+                        var remainingChars = maxLengthLongueur - currentLength;   
+
+                        // Désactivez l'entrée si la limite est atteinte
+                        if (currentLength >= maxLengthLongueur) {
+                            inputLongueur.value = inputLongueur.value.substring(0, maxLengthLongueur);
+                        } else {
+                            inputLongueur.removeAttribute('disabled');
+                        }
+                    });
+                }
+                var inputLargeur = document.querySelector('.largeur-limit-input');
+                var maxLengthLargeur = {{ form.nom.vars.attr.maxlength|default(4) }}; // Récupérez la limite depuis les attributs du champ
+                if (inputLargeur !=null){
+                    inputLargeur.addEventListener('input', function() {
+                        var currentLength = inputLargeur.value.length;
+                        var remainingChars = maxLengthLargeur - currentLength;   
+
+                        // Désactivez l'entrée si la limite est atteinte
+                        if (currentLength >= maxLengthLargeur) {
+                            inputLargeur.value = inputLargeur.value.substring(0, maxLengthLargeur);
+                        } else {
+                            inputLargeur.removeAttribute('disabled');
+                        }
+                    });
+
+                var inputEpaisseur = document.querySelector('.epaisseur-limit-input');
+                var maxLengthEpaisseur = {{ form.nom.vars.attr.maxlength|default(4) }}; // Récupérez la limite depuis les attributs du champ
+                if (inputEpaisseur !=null){
+                    inputEpaisseur.addEventListener('input', function() {
+                        var currentLength = inputEpaisseur.value.length;
+                        var remainingChars = maxLengthEpaisseur - currentLength;   
+
+                        // Désactivez l'entrée si la limite est atteinte
+                        if (currentLength >= maxLengthEpaisseur) {
+                            inputEpaisseur.value = inputEpaisseur.value.substring(0, maxLengthEpaisseur);
+                        } else {
+                            inputEpaisseur.removeAttribute('disabled');
+                        }
+                    });
+                }
+            });
+        </script>
+        <script>
+            function formatCardNumber() {
+                var cardNumberInput = document.getElementById('num-carte');
+                var inputValue = cardNumberInput.value
+                // Supprimer tous les espaces existants
+                var cleanedValue = inputValue.replace(/\s/g, '')
+                // Garder uniquement les chiffres
+                var numericValue = cleanedValue.replace(/\D/g, '');
+
+                // Formater visuellement avec des espaces après chaque groupe de 4 chiffres
+                var formattedValue = numericValue.replace(/(\d{4})/g, '$1 ').trim();
+
+                // Mettre à jour la valeur dans le champ sans changer la valeur réelle
+                cardNumberInput.value = formattedValue;
+            }
+
+            function validateMonthAndYear() {
+                var input = document.getElementById('date-carte');
+                var value = input.value;
+
+                // Supprimer tous les caractères non numériques
+                var cleanedValue = value.replace(/\D/g, '');
+
+                // Limiter la saisie à 4 chiffres (2 pour le mois et 2 pour l'année)
+                var truncatedValue = cleanedValue.slice(0, 4);
+
+                // Formater visuellement avec un slash après le deuxième caractère
+                var formattedValue = truncatedValue.replace(/(\d{2})/, '$1/');
+
+                // Mettre à jour la valeur dans le champ sans changer la valeur réelle
+                input.value = formattedValue;
+            }
+
+            function formatCVCNumber() {
+                var cardNumberInput = document.getElementById('cvc');
+                var inputValue = cardNumberInput.value
+                // Supprimer tous les espaces existants
+                var cleanedValue = inputValue.replace(/\s/g, '')
+                // Garder uniquement les chiffres
+                var numericValue = cleanedValue.replace(/\D/g, '');
+                // Mettre à jour la valeur dans le champ sans changer la valeur réelle
+                cardNumberInput.value = formattedValue;
+            }
+
+            function formatTelNumber() {
+                var cardNumberInput = document.getElementById('tel');
+                var inputValue = cardNumberInput.value
+                // Supprimer tous les espaces existants
+                var cleanedValue = inputValue.replace(/\s/g, '')
+                // Garder uniquement les chiffres
+                var numericValue = cleanedValue.replace(/\D/g, '');
+
+                // Formater visuellement avec des espaces après chaque groupe de 4 chiffres
+                var formattedValue = numericValue.replace(/(\d{2})/g, '$1 ').trim();
+
+                // Mettre à jour la valeur dans le champ sans changer la valeur réelle
+                cardNumberInput.value = formattedValue;
+            }
+        </script>
+        
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+    </head>
+    {% block header %}
+        {% include "partials/_header.html.twig" %}
+    {% endblock %}
+    
+    {% block body %}{% endblock %}
+
+    {% block footer %}
+        {% include "partials/_footer.html.twig" %}
+    {% endblock %}
+    
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+        <script src="{{asset('Javascript/default.js')}}"></script>
+    {% endblock %}
+        
+</html>

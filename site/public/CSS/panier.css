@@ -1,0 +1,63 @@
+.titre{
+    font-size: 300%;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.div-btn{
+    padding-bottom: 5%;
+}
+
+.div-btn>input{
+    width: 100%;
+}
+
+.del{
+    padding: 2%;
+    height: min-content;
+
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    width: 5%;
+    height: 5%;
+    margin-left: 5%;
+    margin-top: 5%;
+
+    z-index: 2;
+
+    
+} 
+
+.del > i {
+    font-size: xx-large;
+}
+
+.box-prod {
+    position: relative;
+}
+
+.article {
+    display: flex ;
+}
+
+.del:hover{
+    filter: drop-shadow(0 0 0.20rem var(--rougeerr));
+}
+
+.quant-prod{
+    background-color: var(--jaune1);
+    border-radius: 20px 0px;
+    padding: 10px;
+    width: fit-content;
+    justify-self: right;
+}
+
+.no-product{
+    display: flex;
+    justify-content: center;
+}
+
+.bouton-no-achat{
+    height: min-content;
+}

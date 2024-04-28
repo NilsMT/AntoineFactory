@@ -1,0 +1,50 @@
+#content{
+    padding-top: 5em;
+}
+
+.formulaire{
+    display: grid;
+    width: 75%;
+    margin-inline: auto;
+    grid-template-areas: 
+    "titre titre"
+    "nom prenom"
+    "email ."
+    "mdp1 mdp2"
+    "bouton bouton";
+    grid-template-columns: 1fr 1fr;
+}
+
+h1{
+    grid-area: titre;
+    display: grid;
+    justify-items: center;
+    margin: 0;
+}
+
+#nom{
+    grid-area: nom;
+}
+
+#prenom{
+    grid-area: prenom;
+}
+
+#email{
+    grid-area: email;
+}
+
+#mdp1{
+    grid-area: mdp1;
+}
+
+#mdp2{
+    grid-area: mdp2;
+}
+
+.formulaire *:nth-child(7){
+    grid-area: bouton;
+    display: grid;
+    justify-self: center;
+    width: 50%;
+} 

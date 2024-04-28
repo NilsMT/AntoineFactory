@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AntoineFactory | Inventaire{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    <link href="{{asset('CSS/default.css')}}" rel="stylesheet"/>
+    <link href="{{asset('CSS/admin.css')}}" rel="stylesheet"/>
+{% endblock %}
+
+{% block header %}
+    {% include "partials/_header.html.twig" %}
+    <div class="actions_supp">
+        <a class="act_supp" href="{{ path('product.index') }}" id="back">&#x276e; Retour</a>
+    </div>
+    <div class="actions_supp">
+        <a class="act_supp" href="">Inventaire</a>
+        <a class="act_supp" href="{{ path('product.commandes') }}">Commandes</a>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <table class="table"> 
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Promo</th>
+                <th>Ventes</th>
+                <th>Stock</th>
+                <th class="desc">Desc</th>
+                <th>lxLxE</th>
+                <th>Cat</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td class="limW">{{product.nom}}</td>
+                <td>{{product.prix}}</td>
+                <td>{{product.promotion}}</td>
+                <td>{{product.nbVentes}}</td>
+                <td>{{product.stock}}</td>
+                <td class="desc"><div class="desc-overflow">{{product.description}}</div></td>
+                <td>{{product.longueur}} x 
+                {{product.largeur}} x 
+                {{product.epaisseur}}</td>
+                <td class="limW">{{product.categorie}}</td>
+                <td class="edit"><a href="{{ path('product.edit', {id : product.id}) }}" class="button"><i class="fa-solid fa-pen-to-square" style="color: #ffa348;"></i></a></td>
+                <td class="edit"><a href="{{path('product.delete', {id : product.id}) }}" class="button" onClick='return deleteConfirmation()' ><i class="fa-solid fa-trash" style="color: #f66151;"></i></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="navigation">
+        {{ knp_pagination_render(products) }}
+        <a href="{{ path('product.new') }}"><input  jaune type="submit"  class="bouton" value="Nouveau produit"></input></a>
+    </div>
+
+    <script>
+        function deleteConfirmation() {
+            return (confirm("Supprimer l'article ?"))
+        }
+    </script>
+{% endblock %}

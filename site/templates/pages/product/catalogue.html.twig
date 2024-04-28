@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AntoineFactory | Catalogue{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    <link href="{{asset('CSS/default.css')}}" rel="stylesheet"/>
+    <link href="{{asset('CSS/catalogue.css')}}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+
+
+        <div class="actions_supp" id="search">
+        <a class="act_supp" href="javascript:history.back()" id="back">&#x276e; Retour</a>
+        <form class="searchform" action="{{ path('product.search') }}" method="post">
+            <input id="searchbar" type="search" name="search" placeholder="Recherchez un article"></input>
+            <button type="submit" id="subsearch"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+    </div>
+    <section id="content">
+        <section class="filtre">
+            {# <div class="titre_filtre">
+                 <i class="fa-solid fa-sliders"></i>
+            </div> #}
+            <form method="post" action="{{ path('product.tri') }}">
+                <div class="input_column">
+                    <label for="filter_drpdwn_method">Trier par :</label>
+                    <select id="filter_drpdwn_method" name="sort_method">
+                        <option value="meilleures_ventes" {% if app.request.get('sort_method') == 'meilleures_ventes' %}selected{% endif %}>Meilleures ventes</option>
+                        <option value="decroissant" {% if app.request.get('sort_method') == 'decroissant' %}selected{% endif %}>Prix décroissant</option>  
+                        <option value="croissant" {% if app.request.get('sort_method') == 'croissant' %}selected{% endif %}>Prix croissant</option>
+                        <option value="promo" {% if app.request.get('sort_method') == 'promo' %}selected{% endif %}>En promotion</option>
+                        {# <option value="nouveaute" {% if app.request.get('sort_method') == 'nouveaute' %}selected{% endif %}>Nouveautés</option> #}
+                    </select>
+                </div>
+                <span class="ligne"> . </span>
+                <div class="input_column">
+                    <label for="filter_drpdwn">Catégorie :</label>
+                    <select id="filter_drpdwn" name="filter">
+                        <option value="Tous" {% if app.request.get('filter') == 'Tous' %}selected{% endif %}>Tous</option>
+                        <option value="Porte_clé" {% if app.request.get('filter') == 'Porte_clé' %}selected{% endif %}>Porte-clés</option>
+                        <option value="Boule de noël" {% if app.request.get('filter') == 'Boule de noël' %}selected{% endif %}>Boule de noël</option>
+                        <option value="Sous_verre" {% if app.request.get('filter') == 'Sous_verre' %}selected{% endif %}>Dessous de verre</option>
+                        <option value="Autre" {% if app.request.get('filter') == 'Autre' %}selected{% endif %}>Autre</option>
+                    </select>
+                </div>
+                <span class="ligne"> . </span>
+                <input class="bouton" jaune type="submit" value="Appliquer"></input>
+            </form>
+        </section>
+        {% if products is not empty %} 
+        <section class="catalog"> 
+                <!--for each article dans la BD-->
+            {% for product in products %}
+                <a href="{{ path('product.info', {id : product.id}) }}" class="article" {% if product.promotion > 0 and product.status != "out" %} promotion="true" {% endif %} status = {{product.status}} >
+                    <img {% if product.imageName != null %} src="{{ vich_uploader_asset(product, 'imageFile') }}" {% endif %} alt="Image du produit" class="img-prod">
+                    <div class="overlay">
+                        <div class="status-prod">
+                            {% if product.status == "low" %}
+                                Bientôt epuisé
+                            {% endif %}
+                            {% if product.status == "out" %}
+                                Épuisé
+                            {% endif %}
+                            {% if product.status == "new" %}
+                                Nouveau
+                            {% endif %}
+                            {% if product.status == "limited" %}
+                                Limité
+                            {% endif %}
+                        </div>
+                        <div class="name-prod">
+                            {{product.nom}}
+                        </div>
+                        <div class="bot-prod">
+                            <div class="price-prod">
+                                    {{ (product.prix * (1 - (product.promotion / 100))) | number_format(2, '.', '') }} €
+                            </div>
+                            <div class="promo-prod">
+                                    -{{product.promotion}}%
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </section>
+        {% else %}
+            <h1 class='err catalogue-no-product'> Il n'y a pas de produits </h1>
+        {% endif %}
+    </section>
+
+
+    {# <div class="navigation">
+        {{ knp_pagination_render(products) }}
+    </div> #}
+   
+{% endblock %}
+
+
+

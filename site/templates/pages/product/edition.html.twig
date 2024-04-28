@@ -1,0 +1,136 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AntoineFactory | Edition Produits{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    <link href="{{asset('CSS/default.css')}}" rel="stylesheet"/>
+    <link href="{{asset('CSS/admin.css')}}" rel="stylesheet"/>
+{% endblock %}
+
+{% block header %}
+    {% include "partials/_header.html.twig" %}
+    <div class="actions_supp">
+        <a class="act_supp" href="javascript:history.back()" id="back">&#x276e; Retour</a>
+    </div>
+{% endblock %}
+    
+{% block body %}
+     <section id="content">
+        <div class="formulaire">
+            <h1 class="center">Edition du produit</h1>
+
+            {{form_start(form)}}
+
+            <div class="input_container" id="nom">
+                {{ form_label(form.nom) }}
+                <div class="limit-wrapper">
+                    {{ form_widget(form.nom, {'attr': {'class': 'nom-limit-input limit-input'}}) }}
+                    <span id="nom-limit-info" class="limit-count"></span>
+                </div>
+                <div class="">
+                    {{ form_errors(form.nom) }}
+                </div>
+            </div>
+
+            <div class="input_container" id="prix">
+                {{ form_label(form.prix) }}
+                {{ form_widget(form.prix, {'attr': {'class': 'prix-limit-input'}}) }}
+                <div id="" class="">
+                    {{ form_errors(form.prix) }}
+                </div>     
+            </div>           
+
+            <div class="input_container" id="promotion">
+                {{ form_label(form.promotion) }}
+                {{ form_widget(form.promotion, {'attr': {'class': 'promo-limit-input'}}) }}
+                <div class="">
+                    {{ form_errors(form.promotion) }}
+                </div>     
+            </div>
+
+            <div class="input_container" id="stock">
+                {{ form_label(form.stock) }}
+                {{ form_widget(form.stock, {'attr': {'class': 'stock-limit-input'}}) }}
+                <div class="">
+                    {{ form_errors(form.stock) }}
+                </div>     
+            </div>      
+
+            <div class="input_container" id="description">
+                {{ form_label(form.description) }}
+                {{ form_widget(form.description) }}
+                <div class="">
+                    {{ form_errors(form.description) }}
+                </div>     
+            </div>
+
+            <div class="input_container" id="materiau">
+                {{ form_label(form.materiau) }}
+                <div class="limit-wrapper">
+                    {{ form_widget(form.materiau, {'attr': {'class': 'materiau-limit-input limit-input'}}) }}
+                    <span id="materiau-limit-info" class="limit-count"></span>
+                </div>
+                <div class="">
+                    {{ form_errors(form.materiau) }}
+                </div>     
+            </div>           
+
+            <div class="input_container" id="longueur">
+                {{ form_label(form.longueur) }}
+                {{ form_widget(form.longueur, {'attr': {'class': 'longueur-limit-input'}}) }}
+                <div class="">
+                    {{ form_errors(form.longueur) }}
+                </div>     
+            </div>
+
+            <div class="input_container" id="largeur">
+                {{ form_label(form.largeur) }}
+                {{ form_widget(form.largeur, {'attr': {'class': 'largeur-limit-input'}}) }}
+                <div class="">
+                    {{ form_errors(form.largeur) }}
+                </div>     
+            </div>  
+
+            <div class="input_container" id="epaisseur">
+                {{ form_label(form.epaisseur) }}
+                {{ form_widget(form.epaisseur, {'attr': {'class': 'epaisseur-limit-input'}}) }}
+                <div class="">
+                    {{ form_errors(form.epaisseur) }}
+                </div>     
+            </div>
+
+            <div class="input_container" id="image">
+                {{ form_label(form.imageFile) }}
+                <p>Pour changer d'image choisir l'option delete et chargez la nouvelle image.</p>
+                {{ form_widget(form.imageFile) }}
+                <div class="">
+                    {{ form_errors(form.imageFile) }}
+                </div>     
+            </div>           
+
+            <div class="input_container" id="categorie">
+                {{ form_label(form.categorie) }}
+                {{ form_widget(form.categorie) }}
+                <div class="">
+                    {{ form_errors(form.categorie) }}
+                </div>     
+            </div>
+
+            <div class="input_container" id="status">
+                {{ form_label(form.status) }}
+                {{ form_widget(form.status) }}
+                <div class="">
+                    {{ form_errors(form.status) }}
+                </div>     
+            </div>  
+            
+            <div class="bouton center" id="bouton">
+                {{ form_row(form.submit) }}
+
+            </div>
+
+            {{form_end(form)}}
+        </div>
+    </section>
+{% endblock %}

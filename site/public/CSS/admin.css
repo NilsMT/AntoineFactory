@@ -1,0 +1,67 @@
+#content{
+    padding:2.5%;
+}
+
+.formulaire {
+    width: 75%;
+}
+
+.limit-wrapper {
+    display: flex;
+    align-items: baseline;
+}
+
+.limit-count {
+    margin-left: 2%; /* Ajustez la marge selon vos besoins */
+    width: 3%;
+}
+
+.limit-input {
+    flex-grow: 1;
+}
+
+
+.center{
+    display: flex;
+    justify-content: center;
+}
+
+table{
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+th{
+    height: 75px;
+    width: auto;
+}
+
+td{
+    text-align: center;
+    border-bottom: solid 1px;
+    height: 50px;
+    padding: 5px;
+}
+
+.limW{
+    width: 10%;
+}
+
+.desc{
+    width: 25%;
+}
+
+.desc-overflow{
+    display: flex;
+    height: 250%;
+    overflow: auto scroll;
+    align-items: center;
+    padding: 5px;
+}
+
+.edit{
+    padding-left: 10px;
+    border-bottom: none;
+}

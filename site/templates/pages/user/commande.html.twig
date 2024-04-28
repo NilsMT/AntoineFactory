@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+{% block title %}AntoineFactory | Commande{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    <link href="{{asset('CSS/default.css')}}" rel="stylesheet"/>
+    <link href="{{asset('CSS/commande.css')}}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+<div class="actions_supp"></div>
+
+<section id="content" >
+    <h1 id="titre-recap">Récapitulatif de la commande : </h1>
+    <div class="box">
+        <div class="descriptif">
+            {% for article in panier %}
+                <div class="desc-prod">
+                    <label> {{article.idProduct.nom}} : </label>
+                    <ul>
+                        <li>Quantité : {{article.quantite}}</li>
+                        <li>Total : {{ (article.idproduct.prix * (1 - article.idproduct.promotion / 100)) | number_format(2, '.', '') }} € </li>
+                    </ul>
+                </div>
+            {% endfor %} 
+        </div>
+        <div>
+            Total de la commande : {{total | number_format(2, '.', '') }} €
+        </div>
+        <form class="submit-paiement" action="{{ path('panier.paiement') }}">
+            <button class="bouton" jaune type="submit">Paiement</button>
+        </form>
+    </div>
+    
+</section> 
+
+
+{% endblock %}
